@@ -54,12 +54,40 @@ int main()
             continue;
         }
 
+	/* Сохраняем текст в указанный файл */
+        if (strcmp(cmd, "save") == 0) {
+            if ((arg = strtok(NULL, " \n")) == NULL) {
+                fprintf(stderr, "Usage: save filename\n");
+            } else {
+                save(txt, arg);
+            }
+            continue;
+        }
+
         /* Выводим текст */
         if (strcmp(cmd, "show") == 0) {
             show(txt);
             continue;
         }
+
+        /* Переводим в верхний регистр */
+        if (strcmp(cmd, "showupper") == 0) {
+            showupper(txt);
+            continue;
+        }
         
+ 	/* Удаляем первую пустую строку */
+	if (strcmp(cmd, "r1e") == 0) {
+            remove_first_entry_line(txt);
+            continue;
+        }
+
+	/* Выводим содержимое с нумерацией строк */
+	if (strcmp(cmd, "shownum") == 0) {
+            shownum(txt);
+            continue;
+        }
+                
         /* Если команда не известна */
         fprintf(stderr, "Unknown command: %s\n", cmd);
     }

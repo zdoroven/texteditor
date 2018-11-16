@@ -1,7 +1,7 @@
 /**
- * show.c -- реализует команду вывода хранимого текста на экран
+ * save.c -- реализует команду сохранения текста
  *
- * Copyright (c) 2017, Alexander Borodin <aborod@petrsu.ru>
+ * Copyright (c) 2018, Darya Madrakhimova <madrahim@petrsu.ru>
  *
  * This code is licensed under a MIT-style license.
  */
