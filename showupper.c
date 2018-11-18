@@ -40,11 +40,13 @@ static void show_line(int index, char *contents, int cursor, void *data)
     /* Капитализация символов */
 
     int len = strlen(contents);
+    char line[MAXLINE];
+    strcpy(line, contents);
 
     for (int i = 0; i < len; i++){
-        contents[i] = toupper(contents[i]);
+        line[i] = toupper(line[i]);
     }
 
     /* Выводим строку на экран */
-    printf("%s", contents);
+    printf("%s", line);
 }
