@@ -22,8 +22,8 @@ static void remove_line(int index, char *contents, int cursor, void *data);
 static int flag = 0;
 void remove_first_entry_line(text txt){
     process_forward(txt, remove_line, NULL);
-    flag = 0;
 }
+
 /* Проверяет что строка состоит только из пробелов. */
 int isos(char *str){
     int len = strlen(str);
@@ -37,6 +37,7 @@ int isos(char *str){
 
 static void remove_line(int index, char *contents, int cursor, void *data)
 {
+    static int flag = 0;
     /* Функция обработчик всегда получает существующую строку */
     assert(contents != NULL);
     
@@ -45,8 +46,10 @@ static void remove_line(int index, char *contents, int cursor, void *data)
     UNUSED(cursor);
     UNUSED(data);
 
-    if((contents[0] == '\n' || isos(contents) == 1 ) && contents[0] != '\0' && !flag){
+    if(strcmp(contents, "\n") == 0 && !flag){
+    if((contents[0] == '\n' || isos(contents) == 1) && contents[0] != '\0' && !flag){
         contents[0] = '\0';
         flag = 1;
+    }
     }
 }
